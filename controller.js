@@ -77,3 +77,16 @@ exports.deletecontact = function(req, res) {
         }
     )
 }
+
+// menampilkan schedule meet by group
+exports.getschedulemeetgroup = function(req, res) {
+    connection.query("SELECT tb_contact.id_contact, tb_contact.nama, tb_contact.nope, tb_category.category, createAt as jadwal_meeting from tb_schedule_meet JOIN tb_contact JOIN tb_category WHERE tb_schedule_meet.id_contact = tb_contact.id_contact AND tb_schedule_meet.id_category = tb_category.id_category ORDER by tb_category.id_category",
+        function(error, rows) {
+            if(error) {
+                console.log(error);
+            } else {
+                response.ok(rows, res)
+            }
+        }
+    )
+}

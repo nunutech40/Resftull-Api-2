@@ -20,4 +20,7 @@ module.exports = function(app) {
 
     app.route('/deletecontact')
         .delete(jsonku.deletecontact);
+
+    app.route('/getschedulemeet')
+        .get(jsonku.getschedulemeetgroup);
 }
